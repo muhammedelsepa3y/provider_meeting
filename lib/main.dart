@@ -1,5 +1,7 @@
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +22,16 @@ void main() async{
 // print (mohamed!.name!);
 // print (mohamed.age!);
 // print (mohamed.friends);
+  if (!kIsWeb) {
+    await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+  }
+  FlutterError.onError=(errorDetails){
+    FirebaseCrashlytics.instance.recordFlutterError(errorDetails);
+  };
+  PlatformDispatcher.instance.onError=(error,stack){
+    FirebaseCrashlytics.instance.recordError(error, stack);
+    return true;
+  };
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context)=>DeskStorage()..getCounter())
@@ -95,7 +107,9 @@ class MyHomePage extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline4,
               ):const CircularProgressIndicator();
             }),
-            ElevatedButton(onPressed: (){
+            ElevatedButton(onPressed: ()
+
+            {
               throw Exception("Bug...");
             }, child: const Text("Throw an Exception"))
 
