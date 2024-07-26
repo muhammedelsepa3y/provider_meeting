@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "643438587690",
+    "project_id": "msp-hosting",
+    "storage_bucket": "msp-hosting.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643438587690:android:ba334108cc9427e3913853",
+        "android_client_info": {
+          "package_name": "com.example.untitled2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC95Vegk1kFBrb9Yz1-a-_9GD0jefhwGrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
